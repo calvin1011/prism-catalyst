@@ -29,4 +29,5 @@ Real-time financial analytics and trading dashboard: Node/Express + Python ML se
 
 ## Workflow
 - Proceed one deliverable at a time; agent states when to commit before moving on.
+- When a task or deliverable is completed, mark it complete in [docs/DEVELOPMENT_PLAN.md](docs/DEVELOPMENT_PLAN.md) (check off the corresponding `- [ ]` → `- [x]`).
 - Prefer minimal comments; add comments only for non-obvious logic, security-sensitive code, or critical business rules.
