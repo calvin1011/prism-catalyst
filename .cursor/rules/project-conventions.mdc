@@ -1,0 +1,27 @@
+---
+description: Prism Catalyst project overview, structure, and core conventions
+alwaysApply: true
+---
+
+# Prism Catalyst – Project Conventions
+
+## What This Is
+Real-time financial analytics and trading dashboard: Node/Express + Python ML services, React frontend, PostgreSQL/MongoDB/Redis. See [README.md](README.md) for full scope.
+
+## Directory Layout
+- **backend/api-service** – Express.js REST API (TypeScript)
+- **backend/websocket-service** – Real-time streaming
+- **backend/data-pipeline** – Python ETL / ingestion
+- **frontend/src** – React app (components, pages, hooks, services, utils)
+- **ml-models/** – Sentiment, prediction, optimization (Python)
+- **infrastructure/** – Terraform, Docker, optional Kubernetes
+- **tests/** – unit, integration, e2e
+
+## Tech Choices
+- Backend API: Node 18+, TypeScript, Express. Auth: JWT, OAuth 2.0.
+- Frontend: React 18+, TypeScript, Redux Toolkit or Zustand, D3/Recharts/Plotly, Material-UI or Tailwind.
+- Python: 3.10+, FastAPI for services, Pandas/NumPy/scikit-learn/PyTorch for ML.
+- Use parameterized queries only; no raw string interpolation in SQL. No secrets in repo; use env or a secrets manager.
+
+## Performance Targets (from README)
+- API p95 &lt; 100ms; WebSocket &lt; 50ms; chart render &lt; 500ms for 1k+ points; ML inference &lt; 200ms.

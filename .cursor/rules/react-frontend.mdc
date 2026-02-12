@@ -1,0 +1,23 @@
+---
+description: React and TypeScript patterns for the frontend app
+globs: frontend/**/*.tsx, frontend/**/*.ts
+alwaysApply: false
+---
+
+# Frontend React Conventions
+
+## Components
+- Use function components only. Prefer React 18+ patterns (e.g. `useId`, Suspense where useful).
+- Colocate component-specific styles or use the project’s chosen system (Material-UI or Tailwind).
+- Extract reusable logic into custom hooks under `frontend/src/hooks/`. Keep components focused on UI.
+
+## State and Data
+- Use Redux Toolkit or Zustand as per README. Use the WebSocket client for real-time market data; keep subscription logic in hooks or services.
+- Fetch via `frontend/src/services/` API clients. Handle loading and error states in the UI.
+
+## Charts and Perf
+- Use D3.js for complex financial charts (candlesticks, volume, indicators); Recharts/Plotly where appropriate.
+- Aim for chart render under 500ms for 1000+ points (virtualize or downsample if needed). Avoid unnecessary re-renders (memo, stable callbacks).
+
+## TypeScript
+- Type props and hook return values. Prefer shared types from a central types file or from API contract (e.g. OpenAPI-generated) when available.
