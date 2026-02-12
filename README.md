@@ -223,35 +223,20 @@ For the detailed plan (task breakdown, dependencies, milestones, and acceptance 
 
 ## Local Development Setup
 
+See **[docs/guides/local-setup.md](docs/guides/local-setup.md)** for full steps (Supabase vs Docker, env, running API + frontend).
+
+**Quick start (databases via Docker):**
 ```bash
-# Clone the repository
-git clone https://github.com/calvin1011/prism-catalyst.git
-cd prism-catalyst
+# Start PostgreSQL, Redis, MongoDB
+docker compose -f infrastructure/docker/docker-compose.yml up -d
 
-# Backend setup
-cd backend/api-service
-npm install
-cp .env.example .env
-# Configure your environment variables
-npm run dev
+# API (from repo root: copy .env.example to .env, set DATABASE_URL and JWT_SECRET)
+cd backend/api-service && npm ci && npm run dev
 
-# Frontend setup
-cd ../../frontend
-npm install
-cp .env.example .env
-# Configure your environment variables
-npm start
-
-# ML service setup
-cd ../ml-service
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python main.py
-
-# Start infrastructure services
-docker-compose up -d  # Starts PostgreSQL, Redis, MongoDB, Kafka
+# Frontend (separate terminal)
+cd frontend && npm ci && npm run dev
 ```
+App: http://localhost:5173 · API: http://localhost:3000
 
 ## Testing
 

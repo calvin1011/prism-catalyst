@@ -52,7 +52,7 @@ flowchart LR
 - [x] **Set up CI/CD pipeline**  
   GitHub Actions (or GitLab CI): install deps, lint, run tests, build for `backend/api-service` and `frontend`. No deploy step required for Phase 1; pipeline must succeed on push/PR.
 
-- [ ] **Docker Compose for local dependencies**  
+- [x] **Docker Compose for local dependencies**  
   `docker-compose up` brings up PostgreSQL (and optionally Redis/MongoDB) so API and future services can run locally. Document in README or `docs/guides/` how to run API + frontend against these.
 
 ### Acceptance criteria (Phase 1)
@@ -69,7 +69,7 @@ flowchart LR
 **Objectives:** Ingest market data from an external API, cache it in Redis, persist history in a time-series–friendly store, and validate data quality.
 
 **Key deliverables**
-- [ ] Integration with at least one market data API (e.g. Alpha Vantage, Yahoo Finance, IEX Cloud).
+- [x] Integration with at least one market data API (e.g. Alpha Vantage, Yahoo Finance, IEX Cloud).
 - [ ] Data ingestion pipeline (Python in `backend/data-pipeline/` or separate service); optionally Kafka/Redis Streams for events.
 - [ ] Redis caching layer for real-time quotes and session-related data.
 - [ ] Historical data storage (e.g. PostgreSQL tables with time bucketing or dedicated time-series DB).
