@@ -16,19 +16,19 @@ export const useAuthStore = create<AuthState>((set) => ({
   setAuth: (token, user) => {
     try {
       localStorage.setItem(TOKEN_KEY, token);
-    } catch {}
+    } catch { /* localStorage unavailable */ }
     set({ token, user });
   },
   clearAuth: () => {
     try {
       localStorage.removeItem(TOKEN_KEY);
-    } catch {}
+    } catch { /* localStorage unavailable */ }
     set({ token: null, user: null });
   },
   hydrate: () => {
     try {
       const t = localStorage.getItem(TOKEN_KEY);
       if (t) set((s) => ({ ...s, token: t }));
-    } catch {}
+    } catch { /* localStorage unavailable */ }
   },
 }));

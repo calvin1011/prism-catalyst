@@ -37,19 +37,19 @@ flowchart LR
 
 ### Tasks and deliverables
 
-- [ ] **Set up repository structure**  
+- [x] **Set up repository structure**  
   Create folders per README: `backend/` (api-service, websocket-service, data-pipeline), `frontend/` (src with components, pages, hooks, services, utils), `ml-models/` (sentiment, prediction, optimization), `infrastructure/` (terraform, docker), `scripts/` (data-collection, deployment), `docs/` (api, architecture, guides), `tests/` (unit, integration, e2e). Add root `.gitignore`, `.env.example` placeholders where needed.
 
-- [ ] **Design database schemas**  
+- [x] **Design database schemas**  
   PostgreSQL: users (id, email, password_hash, created_at, etc.), portfolios (id, user_id, name, created_at), transactions/holdings as needed for Phase 3. Document in `docs/architecture/` or migration comments. Optional: high-level MongoDB doc model for future news/sentiment (e.g. collection names, key fields).
 
-- [ ] **Implement basic REST API**  
+- [x] **Implement basic REST API**  
   Express + TypeScript under `backend/api-service/`. Versioned base path `/api/v1`. Endpoints: `GET /api/v1/health`, `POST /api/v1/auth/register`, `POST /api/v1/auth/login` returning JWT. Use parameterized queries and a shared logger. No raw SQL string concatenation.
 
-- [ ] **Create React frontend skeleton**  
+- [x] **Create React frontend skeleton**  
   React 18+ with TypeScript (Vite or Create React App). Routing in place; at least one placeholder dashboard page (e.g. `/` or `/dashboard`). API client module under `frontend/src/services/` that can call the health and auth endpoints. State management (Redux Toolkit or Zustand) scaffold only if needed for auth state.
 
-- [ ] **Set up CI/CD pipeline**  
+- [x] **Set up CI/CD pipeline**  
   GitHub Actions (or GitLab CI): install deps, lint, run tests, build for `backend/api-service` and `frontend`. No deploy step required for Phase 1; pipeline must succeed on push/PR.
 
 - [ ] **Docker Compose for local dependencies**  
