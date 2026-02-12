@@ -25,3 +25,7 @@ Real-time financial analytics and trading dashboard: Node/Express + Python ML se
 
 ## Performance Targets (from README)
 - API p95 &lt; 100ms; WebSocket &lt; 50ms; chart render &lt; 500ms for 1k+ points; ML inference &lt; 200ms.
+
+## Workflow
+- Proceed one deliverable at a time; agent states when to commit before moving on.
+- Prefer minimal comments; add comments only for non-obvious logic, security-sensitive code, or critical business rules.

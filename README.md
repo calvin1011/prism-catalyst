@@ -128,7 +128,7 @@ This full-stack application provides institutional-grade financial analytics too
 ## Project Structure
 
 ```
-financial-analytics-dashboard/
+prism-catalyst/
 ├── backend/
 │   ├── api-service/          # Express.js REST API
 │   ├── websocket-service/    # Real-time data streaming
@@ -225,8 +225,8 @@ For the detailed plan (task breakdown, dependencies, milestones, and acceptance 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/financial-analytics-dashboard.git
-cd financial-analytics-dashboard
+git clone https://github.com/calvin1011/prism-catalyst.git
+cd prism-catalyst
 
 # Backend setup
 cd backend/api-service
@@ -323,7 +323,7 @@ This project demonstrates proficiency in:
 
 **Calvin Ssendawula** - calvinssendawula@gmail.com
 
-Project Link: [https://github.com/yourusername/financial-analytics-dashboard](https://github.com/yourusername/financial-analytics-dashboard)
+Project Link: [https://github.com/calvin1011/prism-catalyst](https://github.com/calvin1011/prism-catalyst)
 
 ---
 
