@@ -79,6 +79,7 @@ This full-stack application provides institutional-grade financial analytics too
 - [ ] Automated news summarization
 - [ ] Earnings call transcript analysis
 - [ ] Social media sentiment tracking
+- [ ] **Future: AI agent** – Research/assistant (natural-language Q&A over market data, sentiment, and portfolio using LLM + tools).
 
 ### Visualization & Reporting
 - [ ] Interactive candlestick charts with zoom/pan

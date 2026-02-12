@@ -12,3 +12,10 @@ load_dotenv(_env_dir / ".env")
 
 ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY", "").strip()
 ALPHA_VANTAGE_BASE_URL = "https://www.alphavantage.co/query"
+
+def _symbols() -> list[str]:
+    raw = os.getenv("INGEST_SYMBOLS", "AAPL,MSFT,GOOGL").strip()
+    return [s.strip().upper() for s in raw.split(",") if s.strip()]
+
+INGEST_SYMBOLS = _symbols()
+INGEST_QUOTE_DELAY_SECONDS = float(os.getenv("INGEST_QUOTE_DELAY_SECONDS", "12"))
