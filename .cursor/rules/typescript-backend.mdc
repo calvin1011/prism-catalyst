@@ -1,0 +1,38 @@
+---
+description: TypeScript and Express API conventions for backend services
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Backend TypeScript / Express Conventions
+
+## API Design
+- REST with versioned routes: `/api/v1/...`. Optional GraphQL where noted.
+- Use consistent response shapes: `{ data?, error?, meta? }`. Return appropriate HTTP status codes.
+- Document endpoints (Swagger/OpenAPI) so `/api/docs` stays accurate.
+
+## Error Handling
+- Never swallow errors. Log with context, then rethrow or send a structured error response.
+
+```typescript
+// BAD
+try {
+  await fetchQuote(symbol);
+} catch (e) {}
+
+// GOOD
+try {
+  return await fetchQuote(symbol);
+} catch (e) {
+  logger.error('Quote fetch failed', { symbol, error: e });
+  throw new ApiError('Unable to retrieve quote', { statusCode: 502, cause: e });
+}
+```
+
+## Database and Security
+- Use parameterized queries only (e.g. Prisma, knex, or `?` placeholders). No string concatenation for SQL.
+- Validate and sanitize all inputs. Apply rate limiting and auth (JWT/OAuth) as per README.
+
+## Style
+- Prefer async/await. Use a shared logger; avoid bare `console.log` in production paths.
+- Keep handlers thin; put business logic in services or modules that can be unit tested.

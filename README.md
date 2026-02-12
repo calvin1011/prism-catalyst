@@ -165,6 +165,8 @@ financial-analytics-dashboard/
 
 ## Development Phases
 
+For the detailed plan (task breakdown, dependencies, milestones, and acceptance criteria), see [docs/DEVELOPMENT_PLAN.md](docs/DEVELOPMENT_PLAN.md).
+
 ### Phase 1: Foundation (Weeks 1-3)
 - [ ] Set up development environment and repository structure
 - [ ] Design database schemas (PostgreSQL, MongoDB)
