@@ -30,6 +30,7 @@ build/
 # Build and output
 backend/**/dist/
 frontend/build/
+frontend/dist/
 frontend/.cache/
 *.log
 npm-debug.log*
