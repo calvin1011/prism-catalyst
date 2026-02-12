@@ -1,0 +1,6 @@
+# Prism Catalyst – Data pipeline (Python 3.10+)
+# Market data APIs, ingestion, validation
+
+requests>=2.31.0
+python-dotenv>=1.0.0
+pydantic>=2.5.0
