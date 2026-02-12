@@ -21,6 +21,7 @@ Real-time financial analytics and trading dashboard: Node/Express + Python ML se
 - Backend API: Node 18+, TypeScript, Express. Auth: JWT, OAuth 2.0.
 - Frontend: React 18+, TypeScript, Redux Toolkit or Zustand, D3/Recharts/Plotly, Material-UI or Tailwind.
 - Python: 3.10+, FastAPI for services, Pandas/NumPy/scikit-learn/PyTorch for ML.
+- **PostgreSQL**: Supabase (use Supabase connection string or pooler; schema in docs/architecture/database-schemas.md).
 - Use parameterized queries only; no raw string interpolation in SQL. No secrets in repo; use env or a secrets manager.
 
 ## Performance Targets (from README)

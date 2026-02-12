@@ -3,6 +3,9 @@ node_modules/
 .pnp
 .pnp.js
 
+# Reference-only SQL (local use; not tracked)
+docs/architecture/*.sql
+
 # Python
 __pycache__/
 *.py[cod]
