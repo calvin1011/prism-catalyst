@@ -22,3 +22,5 @@ INGEST_QUOTE_DELAY_SECONDS = float(os.getenv("INGEST_QUOTE_DELAY_SECONDS", "12")
 
 REDIS_URL = os.getenv("REDIS_URL", "").strip()
 QUOTE_CACHE_TTL_SECONDS = int(os.getenv("QUOTE_CACHE_TTL_SECONDS", "300"))
+
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()

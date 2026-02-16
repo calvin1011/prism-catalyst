@@ -15,12 +15,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from config import (
     ALPHA_VANTAGE_API_KEY,
+    DATABASE_URL,
     INGEST_SYMBOLS,
     INGEST_QUOTE_DELAY_SECONDS,
     REDIS_URL,
 )
 from ingest import run_ingestion
-from sinks import LogSink, RedisSink
+from sinks import LogSink, PostgresSink, RedisSink
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
@@ -44,6 +45,8 @@ def main() -> None:
     if REDIS_URL:
         quote_sinks.append(RedisSink(REDIS_URL))
     ohlcv_sinks: list = [LogSink()]
+    if DATABASE_URL:
+        ohlcv_sinks.append(PostgresSink(DATABASE_URL))
 
     run_ingestion(
         symbols,

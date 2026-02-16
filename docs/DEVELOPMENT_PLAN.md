@@ -72,7 +72,7 @@ flowchart LR
 - [x] Integration with at least one market data API (e.g. Alpha Vantage, Yahoo Finance, IEX Cloud).
 - [x] Data ingestion pipeline (Python in `backend/data-pipeline/` or separate service); optionally Kafka/Redis Streams for events.
 - [x] Redis caching layer for real-time quotes and session-related data.
-- [ ] Historical data storage (e.g. PostgreSQL tables with time bucketing or dedicated time-series DB).
+- [x] Historical data storage (e.g. PostgreSQL tables with time bucketing or dedicated time-series DB).
 - [ ] Data quality checks (e.g. schema validation, null/range checks, basic monitoring).
 
 **Dependencies:** Phase 1 (API and repo structure; DB available).
