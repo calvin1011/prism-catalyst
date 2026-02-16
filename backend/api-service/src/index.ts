@@ -24,6 +24,9 @@ const server = app.listen(env.port, () => {
 
 process.on('SIGTERM', () => {
   server.close(() => {
-    import('./db.js').then(({ closePool }) => closePool()).then(() => process.exit(0));
+    Promise.all([
+      import('./db.js').then(({ closePool }) => closePool()),
+      import('./redis.js').then(({ closeRedis }) => closeRedis()),
+    ]).then(() => process.exit(0));
   });
 });

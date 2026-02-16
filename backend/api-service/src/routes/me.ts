@@ -5,7 +5,7 @@ import { getPool, hasDb } from '../db.js';
 const router = Router();
 router.use(requireAuth);
 
-router.get('/me', async (req: Request, res: Response): Promise<void> => {
+router.get('/', async (req: Request, res: Response): Promise<void> => {
   if (!hasDb()) {
     res.status(503).json({ error: 'Service unavailable' });
     return;

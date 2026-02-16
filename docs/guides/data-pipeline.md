@@ -37,7 +37,7 @@ Output is JSON to stdout. If the key is missing or invalid, the script exits wit
 
 ## Ingestion pipeline
 
-The pipeline fetches quotes (and optionally daily OHLCV) for a list of symbols and writes to **sinks**. Until Redis and PostgreSQL are wired in, the default sink is logging only.
+The pipeline fetches quotes (and optionally daily OHLCV) for a list of symbols and writes to **sinks**. With `REDIS_URL` set in repo root `.env`, quotes are also written to Redis; the API serves them at `GET /api/v1/quotes/:symbol`.
 
 From `backend/data-pipeline`:
 
@@ -52,15 +52,17 @@ python run_ingestion.py --daily
 python run_ingestion.py AAPL MSFT
 ```
 
-Optional env (repo root `.env`): `INGEST_SYMBOLS` (comma-separated), `INGEST_QUOTE_DELAY_SECONDS` (delay between API calls; default 12 for free tier).
+Optional env (repo root `.env`): `INGEST_SYMBOLS`, `INGEST_QUOTE_DELAY_SECONDS`, `REDIS_URL` (quote cache), `QUOTE_CACHE_TTL_SECONDS` (default 300).
 
 ## Layout
 
-- `config.py` – env: `ALPHA_VANTAGE_API_KEY`, `INGEST_SYMBOLS`, `INGEST_QUOTE_DELAY_SECONDS`
+- `config.py` – env: `ALPHA_VANTAGE_API_KEY`, `INGEST_SYMBOLS`, `INGEST_QUOTE_DELAY_SECONDS`, `REDIS_URL`, `QUOTE_CACHE_TTL_SECONDS`
 - `models.py` – normalized `Quote` and `OHLCV` (Pydantic) for any provider
 - `providers/alpha_vantage.py` – Alpha Vantage client (quote + daily series)
-- `sinks/` – `QuoteSink` and `OHLCVSink`; `LogSink` now; Redis/DB sinks in later Phase 2 steps
+- `sinks/` – `LogSink`, `RedisSink` (quote cache); DB sink in a later Phase 2 step
 - `ingest.py` – job runner (fetch → sinks)
 - `fetch_quote.py` – CLI to test the API; `run_ingestion.py` – run ingestion job
+
+The API (`backend/api-service`) reads cached quotes from Redis at `GET /api/v1/quotes/:symbol` when `REDIS_URL` is set.
 
 Additional providers (e.g. Yahoo Finance, IEX) can be added in `providers/` and return the same `Quote`/`OHLCV` models.
