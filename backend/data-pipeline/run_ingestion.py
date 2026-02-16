@@ -13,9 +13,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from config import ALPHA_VANTAGE_API_KEY, INGEST_SYMBOLS, INGEST_QUOTE_DELAY_SECONDS
+from config import (
+    ALPHA_VANTAGE_API_KEY,
+    INGEST_SYMBOLS,
+    INGEST_QUOTE_DELAY_SECONDS,
+    REDIS_URL,
+)
 from ingest import run_ingestion
-from sinks import LogSink
+from sinks import LogSink, RedisSink
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
@@ -35,11 +40,15 @@ def main() -> None:
         print("Error: no symbols (set INGEST_SYMBOLS or pass symbols).", file=sys.stderr)
         sys.exit(1)
 
-    log_sink = LogSink()
+    quote_sinks: list = [LogSink()]
+    if REDIS_URL:
+        quote_sinks.append(RedisSink(REDIS_URL))
+    ohlcv_sinks: list = [LogSink()]
+
     run_ingestion(
         symbols,
-        quote_sinks=[log_sink],
-        ohlcv_sinks=[log_sink],
+        quote_sinks=quote_sinks,
+        ohlcv_sinks=ohlcv_sinks,
         fetch_daily=args.daily,
         delay_seconds=INGEST_QUOTE_DELAY_SECONDS,
     )

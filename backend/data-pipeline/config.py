@@ -19,3 +19,6 @@ def _symbols() -> list[str]:
 
 INGEST_SYMBOLS = _symbols()
 INGEST_QUOTE_DELAY_SECONDS = float(os.getenv("INGEST_QUOTE_DELAY_SECONDS", "12"))
+
+REDIS_URL = os.getenv("REDIS_URL", "").strip()
+QUOTE_CACHE_TTL_SECONDS = int(os.getenv("QUOTE_CACHE_TTL_SECONDS", "300"))
