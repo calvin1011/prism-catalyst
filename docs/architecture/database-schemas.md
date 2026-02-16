@@ -2,6 +2,8 @@
 
 PostgreSQL is hosted on **Supabase**. Apply via Supabase SQL Editor or your migration tool using `DATABASE_URL`. Reference `.sql` files in this folder are gitignored; copy from below or keep local scripts as needed.
 
+**Convention:** For every new table, provide (1) `CREATE TABLE` + indexes and (2) **RLS policies**. RLS is auto-enabled in Supabase; run the policy SQL in the SQL Editor so the table is accessible as intended. Agent/developer: give the user both in chat when adding tables.
+
 ## PostgreSQL
 
 ### users
